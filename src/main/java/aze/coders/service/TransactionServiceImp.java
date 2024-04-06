@@ -150,7 +150,7 @@ public class TransactionServiceImp implements TransactionsService {
         try {
             String query="alter table transactions add column "+ columnName+"  "+dataType+" ";
             Statement statement = connection.createStatement();
-            statement.execute(query);
+            statement.executeUpdate(query);
             System.out.println("Alter Add Column Transaction");
         } catch (SQLException e) {
             System.out.println("Xetaaaa Add column"+e.getMessage());
@@ -158,63 +158,63 @@ public class TransactionServiceImp implements TransactionsService {
     }
     public void alterForeignKey(String table_name,String constraint_name,String column_name,String other_table,String other_column,Connection connection) {
         try {
-            String query="alter table ? DROP CONSTRAINT ? ,ADD CONSTRAINT ? FOREIGN KEY (?) REFERENCES ?(?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1,table_name);
-            preparedStatement.setString(2,constraint_name);
-            preparedStatement.setString(3,constraint_name);
-            preparedStatement.setString(4,column_name);
-            preparedStatement.setString(5,other_table);
-            preparedStatement.setString(6,other_column);
-           preparedStatement.executeUpdate();
+            String query="alter table "+table_name+" ADD CONSTRAINT "+constraint_name+" FOREIGN KEY ("+column_name+") REFERENCES "+other_table+"( "+other_column+")";
+            Statement statement = connection.createStatement();
+           statement.execute(query);
             System.out.println("ADD Constraint  id Transaction");
+            statement.close();
         } catch (SQLException e) {
             System.out.println("Xetaaaa Alter Constarint"+e.getMessage());
         }
     }
 
-  //  @Override
-//     public void firstFiveTranWithFunc() {
-//         Connection connection= DBConnection.getConnection();
+//    @Override
+//     public void firstFiveTranWithFunc(Connection connection) {
 //         try {
-// String query="CREATE OR REPLACE FUNCTION get_ilkfirst_5_transactions()\n" +
-//         "RETURNS TABLE (\n" +
-//         "    transaction_id INT,\n" +
-//         "    date DATE,\n" +
-//         "    sender_account INT,\n" +
-//         "    receiver_account INT,\n" +
-//         "    amount NUMERIC,\n" +
-//         "    currency TEXT\n" +
-//         ") AS $$\n" +
-//         "BEGIN\n" +
-//         "    RETURN QUERY SELECT transaction_id, date, sender_account, receiver_account, amount, currency \n" +
-//         "                 FROM transactions \n" +
-//         "                 LIMIT 5;\n" +
-//         "END;\n" +
-//         "$$ LANGUAGE plpgsql;";
+// String query="create or replace function get_first (" +
+//         "  say integer" +
+//         ") " +
+//         "returns table (" +
+//         "transaction_id integer," +
+//         "date date," +
+//         "sender_account integer, "+
+//         "receiver_account integer,"+
+//         "amount integer,"+
+//         "currency varchar"+
+//         ") " +
+//         "language plpgsql " +
+//         "as $$ " +
+//         "begin " +
+//         "return query " +
+//         "select " +
+//         "transaction_id, " +
+//         "date," +
+//         "sender_account ,"+
+//         "receiver_account, "+
+//         "amount ,"+
+//         "currency ,"+
+//         " from " +
+//         " transactions " +
+//         "limit " +
+//         "say; " +
+//         "end; " +
+//         "$$; ";
 //
-//             System.out.println("gfdhj");
 //             Statement statement = connection.createStatement();
 //             statement.execute(query);
-//
-//             String callQuery="select*from get_ilkfirst_5_transactions()";
-//             CallableStatement callStatement = connection.prepareCall(callQuery);
-//             callStatement.registerOutParameter(1, Types.OTHER);
-//              callStatement.execute(callQuery);
-//           ResultSet resultSet= (ResultSet) callStatement.getObject(1);
+//             CallableStatement upperProc = connection.prepareCall("{call get_first( ? ) }");
+//             upperProc.setInt(1, 5);
+//             upperProc.execute();
+//             upperProc.close();
+////             String callQuery="";
+////             CallableStatement callStatement = connection.prepareCall(callQuery);
+//            // callStatement.registerOutParameter(1, Types.OTHER);
+////              callStatement.execute(callQuery);
+////           ResultSet resultSet= (ResultSet) callStatement.getObject(1);
 //             System.out.println("678900");
 //             Transactions transactions=new Transactions();    statement.close();
-//             while(resultSet.next()){
-//                // transactions.setTransaction_id(resultSet.getInt("transaction_id"));
-//                 transactions.setSender_account(resultSet.getInt("sender_account"));
-//                 transactions.setReceiver_account(resultSet.getInt("reciever_account"));
-//                 transactions.setDate(resultSet.getString("date"));
-//                 transactions.setAmount(resultSet.getDouble("amount"));
-//                 transactions.setCurrency(resultSet.getString("currency"));
-//                 System.out.println(transactions);
-//             }
-//             callStatement.close();
-//             resultSet.close();
+////
+//             upperProc.close();
 //             System.out.println("Func declare Transaction");
 //         } catch  (SQLException e) {
 //             System.out.println("Xetaaaa Func Declare"+e.getMessage());

@@ -19,12 +19,12 @@ public class Main {
                 "Elmir", "Fərhad", "Aynura", "Ramil", "Nigar", "Murad", "Günel", "Elvin", "Günay", "Nərgiz"};
 
         Connection conn= DbConnection.getConnection();
- // createTable(conn);
-    insertData(conn, clientNames);
+  //createTable(conn);
+  // insertData(conn, clientNames);
         ClientServiceImpl client = new ClientServiceImpl();
-      //  Client client1=new Client("Eyvaz",21);
-//        client.deleteClient(21);
-    //    client.updateClientName(20, "Eyvaz");
+//       Client client1=new Client("Eyvaz",21);
+//     client.deleteClient(21);
+//       client.updateClientName(20, "Eyvaz");
 
         System.out.println("--------------------------------------------------------------------------------------");
 
@@ -36,17 +36,19 @@ public class Main {
         //accountService.selectGetaccountsby(); filter secimi
 
         //accountService.updateAccountName(1, "Nəzrin1"); adi yenileme
-        System.out.println("*****Esma*******");
-        Transactions transactions=new Transactions("2012-23-01",1005640010,555555555,666666,"euro");
-        //transactionsService.createTransaction( conn);
-        //transactionsService.insertIntoTransaction(transactions, conn);
-        // transactionsService.dropTransaction(conn);
-        // transactionsService.getWithId(34565,conn);
-        // transactionsService.deleteWithId(3,conn);
+        System.out.println("***********************************************************");
+        Transactions transactions=new Transactions("2012-23-01",18,4,666666,"euro");
+       //transactionsService.createTransaction( conn);
+      //transactionsService.insertIntoTransaction(transactions, conn);
+       // transactionsService.dropTransaction(conn);
+        // transactionsService.getWithId(1,conn);
+       // transactionsService.deleteWithId(3,conn);
         // transactionsService.updateWithId(1,transactions,conn);
-        // transactionsService.selectAll(conn);
-        //  transactionsService.alterAddTransaction("salary","text",conn);
-        //  transactionsService.firstFiveTranWithFunc();
+       // transactionsService.selectAll(conn);
+     // transactionsService.alterAddTransaction("phone","text",conn);
+     // transactionsService.alterForeignKey("transactions","sender_fk","sender_account","clients","client_id",conn );
+        //transactionsService.alterForeignKey("transactions","receiver_fk","reciever_account","clients","client_id",conn );
+         // transactionsService.firstFiveTranWithFunc(conn);
 
     }
     public static void createTable(Connection conn) {
@@ -86,16 +88,6 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error inserting data");
         }
-        System.out.println("*****Esma*******");
-        Transactions transactions=new Transactions("2012-23-01",1005640010,555555555,666666,"euro");
-        //transactionsService.createTransaction( conn);
-        //transactionsService.insertIntoTransaction(transactions, conn);
-       // transactionsService.dropTransaction(conn);
-        // transactionsService.getWithId(34565,conn);
-        // transactionsService.deleteWithId(3,conn);
-        // transactionsService.updateWithId(1,transactions,conn);
-        // transactionsService.selectAll(conn);
-        //  transactionsService.alterAddTransaction("salary","text",conn);
-        //  transactionsService.firstFiveTranWithFunc();
+
     }
 }
