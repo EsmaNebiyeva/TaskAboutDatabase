@@ -1,7 +1,10 @@
 package aze.coders;
 
 import aze.coders.connection.DbConnection;
+import aze.coders.entity.Accounts;
 import aze.coders.entity.Client;
+import aze.coders.service.AccountServiceImpl;
+import aze.coders.service.AccountTable;
 import aze.coders.service.ClientServiceImpl;
 
 import java.sql.PreparedStatement;
@@ -19,12 +22,20 @@ public class Main {
 //        createTable(conn);
 //        insertData(conn, clientNames);
         ClientServiceImpl client = new ClientServiceImpl();
-        Client client1=new Client("Eyvaz",21);
+        /*Client client1=new Client("Eyvaz",21);
 //        client.deleteClient(21);
-        client.updateClientName(20, "Eyvaz");
+        client.updateClientName(20, "Eyvaz");*/
 
+        System.out.println("--------------------------------------------------------------------------------------");
 
+       //AccountTable.create_account_table(conn); // account table-yarat
+      // AccountTable.insert_accounts();   movcud client ucun account yarat
 
+        //AccountServiceImpl accountService = new AccountServiceImpl(); //class obyekti yarat
+
+        //accountService.selectGetaccountsby(); filter secimi
+
+        //accountService.updateAccountName(1, "Nəzrin1"); adi yenileme
 
     }
     public static void createTable(Connection conn) {
