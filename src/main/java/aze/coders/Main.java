@@ -39,7 +39,7 @@ public class Main {
         System.out.println("***********************************************************");
         Transactions transactions=new Transactions("2012-23-01",5,17,666666,"euro");
       // transactionsService.createTransaction( conn);
-     transactionsService.insertIntoTransaction(transactions, conn);
+     //transactionsService.insertIntoTransaction(transactions, conn);
        // transactionsService.dropTransaction(conn);
         // transactionsService.getWithId(1,conn);
        // transactionsService.deleteWithId(3,conn);
