@@ -19,8 +19,8 @@ public class Main {
                 "Elmir", "Fərhad", "Aynura", "Ramil", "Nigar", "Murad", "Günel", "Elvin", "Günay", "Nərgiz"};
 
         Connection conn= DbConnection.getConnection();
-  //createTable(conn);
-  // insertData(conn, clientNames);
+ // createTable(conn);
+  //insertData(conn, clientNames);
         ClientServiceImpl client = new ClientServiceImpl();
 //       Client client1=new Client("Eyvaz",21);
 //     client.deleteClient(21);
@@ -28,8 +28,8 @@ public class Main {
 
         System.out.println("--------------------------------------------------------------------------------------");
 
-      AccountTable.create_account_table(conn); // account table-yarat
-      // AccountTable.insert_accounts();   movcud client ucun account yarat
+     // AccountTable.create_account_table(conn); // account table-yarat
+     //  AccountTable.insert_accounts();  // movcud client ucun account yarat
 
         //AccountServiceImpl accountService = new AccountServiceImpl(); //class obyekti yarat
 
@@ -37,17 +37,17 @@ public class Main {
 
         //accountService.updateAccountName(1, "Nəzrin1"); adi yenileme
         System.out.println("***********************************************************");
-        Transactions transactions=new Transactions("2012-23-01",18,4,666666,"euro");
-       //transactionsService.createTransaction( conn);
-      //transactionsService.insertIntoTransaction(transactions, conn);
+        Transactions transactions=new Transactions("2012-23-01",5,17,666666,"euro");
+      // transactionsService.createTransaction( conn);
+     transactionsService.insertIntoTransaction(transactions, conn);
        // transactionsService.dropTransaction(conn);
         // transactionsService.getWithId(1,conn);
        // transactionsService.deleteWithId(3,conn);
         // transactionsService.updateWithId(1,transactions,conn);
        // transactionsService.selectAll(conn);
      // transactionsService.alterAddTransaction("phone","text",conn);
-     // transactionsService.alterForeignKey("transactions","sender_fk","sender_account","clients","client_id",conn );
-        //transactionsService.alterForeignKey("transactions","receiver_fk","reciever_account","clients","client_id",conn );
+      //transactionsService.alterForeignKey("transactions","sender_fk","sender_account","accounts","account_id",conn );
+       // transactionsService.alterForeignKey("transactions","receiver_fk","reciever_account","accounts","account_id",conn );
          // transactionsService.firstFiveTranWithFunc(conn);
 
     }

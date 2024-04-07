@@ -31,6 +31,7 @@ public class TransactionServiceImp implements TransactionsService {
        try {
 
            String query="insert into transactions(date,sender_account,reciever_account,amount,currency) values(?,?,?,?,?);";
+
            PreparedStatement preparedStatement= connection.prepareStatement(query);
            preparedStatement.setString(1,transactions.getDate());
            preparedStatement.setInt(2,transactions.getSender_account());

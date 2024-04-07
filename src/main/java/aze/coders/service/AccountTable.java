@@ -19,7 +19,7 @@ public class AccountTable {
     public static void create_account_table(Connection connection){
 
         try {
-            String strquery = "CREATE TABLE IF NOT EXISTS accounts (account_id INT, accountname text NOT NULL, branch_id INT NOT NULL, currency_id INT NOT NULL, CONSTRAINT foreign_acc_id FOREIGN KEY (account_id) REFERENCES clients (client_id)) ON DELETE CASCADE";
+            String strquery = "CREATE TABLE IF NOT EXISTS accounts (account_id INT primary key, accountname text NOT NULL, branch_id INT NOT NULL, currency_id INT NOT NULL, CONSTRAINT foreign_acc_id FOREIGN KEY (account_id) REFERENCES clients (client_id))";
 
             Statement statement = connection.createStatement();
             statement.executeUpdate(strquery);
