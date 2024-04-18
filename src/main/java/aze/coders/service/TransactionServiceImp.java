@@ -169,56 +169,53 @@ public class TransactionServiceImp implements TransactionsService {
         }
     }
 
-//    @Override
-//     public void firstFiveTranWithFunc(Connection connection) {
-//         try {
-// String query="create or replace function get_first (" +
-//         "  say integer" +
-//         ") " +
-//         "returns table (" +
-//         "transaction_id integer," +
-//         "date date," +
-//         "sender_account integer, "+
-//         "receiver_account integer,"+
-//         "amount integer,"+
-//         "currency varchar"+
-//         ") " +
-//         "language plpgsql " +
-//         "as $$ " +
-//         "begin " +
-//         "return query " +
-//         "select " +
-//         "transaction_id, " +
-//         "date," +
-//         "sender_account ,"+
-//         "receiver_account, "+
-//         "amount ,"+
-//         "currency ,"+
-//         " from " +
-//         " transactions " +
-//         "limit " +
-//         "say; " +
-//         "end; " +
-//         "$$; ";
-//
-//             Statement statement = connection.createStatement();
-//             statement.execute(query);
-//             CallableStatement upperProc = connection.prepareCall("{call get_first( ? ) }");
-//             upperProc.setInt(1, 5);
-//             upperProc.execute();
-//             upperProc.close();
-////             String callQuery="";
-////             CallableStatement callStatement = connection.prepareCall(callQuery);
-//            // callStatement.registerOutParameter(1, Types.OTHER);
-////              callStatement.execute(callQuery);
-////           ResultSet resultSet= (ResultSet) callStatement.getObject(1);
-//             System.out.println("678900");
-//             Transactions transactions=new Transactions();    statement.close();
-////
-//             upperProc.close();
-//             System.out.println("Func declare Transaction");
-//         } catch  (SQLException e) {
-//             System.out.println("Xetaaaa Func Declare"+e.getMessage());
-//         }
-//     }
+    @Override
+     public void firstFiveTranWithFunc(Connection connection) {
+         try {
+ String query="create or replace function get_first (" +
+         "  say integer" +
+         ") " +
+         "returns table (" +
+         "transaction_id integer," +
+         "date date," +
+         "sender_account integer, "+
+         "receiver_account integer,"+
+         "amount integer,"+
+         "currency varchar"+
+         ") " +
+         "language plpgsql " +
+         "as $$ " +
+         "begin " +
+         "return query " +
+         "select * " +
+         " from " +
+         " transactions " +
+         "limit " +
+         "say; " +
+         "end; " +
+         "$$; ";
+
+             Statement statement = connection.createStatement();
+             statement.execute(query);
+             CallableStatement upperProc = connection.prepareCall("{?=call get_first( ? ) }");
+
+             upperProc.execute();
+
+             String callQuery="";
+             CallableStatement callStatement = connection.prepareCall(callQuery);
+
+
+             callStatement.setInt(1, 5);
+             callStatement.registerOutParameter(1, Types.OTHER);
+              callStatement.execute(callQuery);
+           //ResultSet resultSet= (ResultSet) callStatement.getObject(1);
+             System.out.println("678900");
+           //  Transactions transactions=new Transactions();
+             statement.close();
+             upperProc.close();
+             System.out.println("Func declare Transaction");
+         } catch  (SQLException e) {
+             System.out.println("Xetaaaa Func Declare"+e.getMessage());
+         }
+     }
 }

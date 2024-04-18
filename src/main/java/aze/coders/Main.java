@@ -48,7 +48,7 @@ public class Main {
      // transactionsService.alterAddTransaction("phone","text",conn);
       //transactionsService.alterForeignKey("transactions","sender_fk","sender_account","accounts","account_id",conn );
        // transactionsService.alterForeignKey("transactions","receiver_fk","reciever_account","accounts","account_id",conn );
-         // transactionsService.firstFiveTranWithFunc(conn);
+          transactionsService.firstFiveTranWithFunc(conn);
 
     }
     public static void createTable(Connection conn) {
